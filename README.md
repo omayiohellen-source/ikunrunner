@@ -136,3 +136,48 @@ https://<project-name>.vercel.app/
 - 不要使用 `file:///C:/...` 分享给别人；那只在本机有效。
 - 对外分享时，请使用 GitHub Pages、Cloudflare Pages 或 Vercel 生成的 HTTPS 网址。
 - 音频是动作语音，浏览器会在用户点击/触控后播放；播放失败会被静默处理，不会中断游戏。
+
+## zhouge-game.cloud 部署修复
+
+如果 `zhouge-game.cloud` 显示的是项目根目录或 `README.md`，说明部署平台正在发布源码根目录，而不是 Vite 构建后的 `dist/`。
+
+正确设置：
+
+```text
+Build command: npm run build
+Publish / Output directory: dist
+Install command: npm install 或 npm ci
+Root directory: 仓库根目录
+```
+
+本仓库已经加入以下部署配置：
+
+- `vercel.json`：Vercel 使用 `npm run build` 并发布 `dist`。
+- `netlify.toml`：Netlify 使用 `npm run build` 并发布 `dist`。
+- `wrangler.toml`：Cloudflare Pages 使用 `dist` 作为输出目录。
+- `.github/workflows/deploy-pages.yml`：GitHub Pages 构建并发布 `dist`。
+
+Cloudflare Pages 控制台设置：
+
+```text
+Framework preset: Vite
+Build command: npm run build
+Build output directory: dist
+```
+
+Vercel 控制台设置：
+
+```text
+Framework Preset: Vite
+Build Command: npm run build
+Output Directory: dist
+```
+
+Netlify 控制台设置：
+
+```text
+Build command: npm run build
+Publish directory: dist
+```
+
+部署后请重新触发一次生产部署，并清理浏览器缓存后访问 `https://zhouge-game.cloud/`。
