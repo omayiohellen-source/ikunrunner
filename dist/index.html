@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b1024" />
+    <title>ikun跑酷</title>
+    <script type="module" crossorigin src="./assets/index-C7ZAiTcr.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DocrRzT0.css">
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="hud" aria-label="游戏状态">
+        <div class="score-card">
+          <span>分数</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="score-card">
+          <span>最高分</span>
+          <strong id="bestScore">0</strong>
+        </div>
+        <div class="hud-actions">
+          <button id="muteButton" class="icon-button" type="button" aria-label="声音开关" title="声音开关">♪</button>
+          <button id="pauseButton" class="icon-button" type="button" aria-label="暂停" title="暂停">Ⅱ</button>
+        </div>
+      </header>
+
+      <p id="orientationHint" class="orientation-hint">建议横屏游玩，竖屏也可以继续挑战。</p>
+
+      <main class="stage-shell">
+        <canvas id="gameCanvas" width="960" height="600" aria-label="ikun跑酷游戏画面"></canvas>
+
+        <section id="startScreen" class="overlay start-screen">
+          <img id="gameIcon" class="game-icon" alt="" />
+          <h1>ikun跑酷</h1>
+          <p>贴地篮球跳跃，浮空篮球下蹲，篮球框要二连跳。</p>
+          <div class="overlay-actions">
+            <button id="startButton" class="primary-button" type="button">开始游戏</button>
+            <button id="startMuteButton" class="secondary-button" type="button">声音：开</button>
+          </div>
+          <p class="help-text">电脑：Space / W / ↑ 跳跃，S / ↓ 下蹲。手机：右侧跳跃，左侧长按下蹲。</p>
+        </section>
+
+        <section id="gameOverScreen" class="overlay game-over hidden">
+          <h2>游戏结束</h2>
+          <p id="resultText">本局得分 0</p>
+          <p id="hitText">被障碍物击中</p>
+          <div class="overlay-actions">
+            <button id="restartButton" class="primary-button" type="button">再来一局</button>
+            <button id="copyLinkButton" class="secondary-button" type="button">复制游戏链接</button>
+          </div>
+        </section>
+      </main>
+
+      <nav class="touch-controls" aria-label="手机触控按钮">
+        <button id="duckButton" class="touch-button duck" type="button">下蹲</button>
+        <button id="jumpButton" class="touch-button jump" type="button">跳跃</button>
+      </nav>
+    </div>
+  </body>
+</html>
